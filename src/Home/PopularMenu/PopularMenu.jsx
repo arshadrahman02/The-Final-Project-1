@@ -3,7 +3,7 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import MenuItem from "../MenuItem/MenuItem";
 
 const PopularMenu = () => {
-  const [menu, setMenu] = useState();
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     fetch("/public/menu.json")
@@ -25,7 +25,7 @@ const PopularMenu = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
           <div>
-            <button className="btn btn-accent font-mono mx-28 mt-10 lg:w-36 lg:mx-[440px] lg:mt-5 ">
+            <button className="btn btn-accent font-mono mx-28 w-40 mt-16  lg:w-36 lg:mx-[440px] lg:mt-5 ">
               View Full Menu
             </button>
           </div>

@@ -5,6 +5,7 @@ import ChefBanner from "./ChefBanner/ChefBanner";
 import PopularMenu from "./PopularMenu/PopularMenu";
 import CallUsFooter from "./CallUsFooter/CallUsFooter";
 import Recommend from "./Recomend/Recommend";
+import Featured from "./Featured/Featured";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <PopularMenu></PopularMenu>
       <CallUsFooter></CallUsFooter>
       <Recommend></Recommend>
+      <Featured></Featured>
     </div>
   );
 };

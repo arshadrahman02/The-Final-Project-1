@@ -11,7 +11,7 @@ const MenuItem = ({ item }) => {
         className="w-[80px]"
       />
       <div>
-        <h3 className="uppercase">{name}---------</h3>
+        <h3 className="uppercase font-bold">{name}---------</h3>
         <p>{recipe}</p>
       </div>
       <p className="text-yellow-600">${price}</p>

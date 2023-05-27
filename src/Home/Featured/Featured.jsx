@@ -1,6 +1,7 @@
 import React from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import featuredImage from "../../assets/home/featured.jpg";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   return (
@@ -32,9 +33,11 @@ const Featured = () => {
               voluptates vel architecto consectetur optio iure tenetur tempore
               sunt necessitatibus rerum quis?
             </p>
-            <button className="btn btn-outline mt-5 border-0 border-b-4 text-white hover:text-green-500 font-bold">
-              Order Now
-            </button>
+            <Link to="/menu">
+              <button className="btn btn-outline mt-5 border-0 border-b-4 text-white hover:text-green-500 font-bold">
+                Order Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

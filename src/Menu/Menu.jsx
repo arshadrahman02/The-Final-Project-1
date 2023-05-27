@@ -40,7 +40,7 @@ const Menu = () => {
 
       {/* desserts cover */}
       <MenuCategory
-        title="DESSERTS"
+        title="desserts"
         items={desserts}
         coverImage={dessertImg}
         subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda inventore eum voluptas, minima autem reprehenderit official. "
@@ -48,7 +48,7 @@ const Menu = () => {
 
       {/* pizza cover */}
       <MenuCategory
-        title="PIZZA'S"
+        title="pizza"
         items={pizza}
         coverImage={pizzaImg}
         subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda inventore eum voluptas, minima autem reprehenderit official. "
@@ -56,7 +56,7 @@ const Menu = () => {
 
       {/* salad cover */}
       <MenuCategory
-        title="SALAD'S"
+        title="salad"
         items={salad}
         coverImage={saladImg}
         subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda inventore eum voluptas, minima autem reprehenderit official. "
@@ -64,7 +64,7 @@ const Menu = () => {
 
       {/* soups cover */}
       <MenuCategory
-        title="SOUP"
+        title="soup"
         items={soup}
         coverImage={soupImg}
         subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda inventore eum voluptas, minima autem reprehenderit official. "

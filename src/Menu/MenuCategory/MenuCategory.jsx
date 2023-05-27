@@ -2,6 +2,7 @@ import React from "react";
 import UseMenu from "../../Hooks/UseMenu";
 import MenuItem from "../../Home/MenuItem/MenuItem";
 import Cover from "../../Shared/Cover/Cover";
+import { Link } from "react-router-dom";
 // import coverImage from "../../assets/";
 const MenuCategory = ({ items, title, coverImage, subtitle }) => {
   return (
@@ -14,9 +15,11 @@ const MenuCategory = ({ items, title, coverImage, subtitle }) => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <button className="btn btn-outline border-0 border-b-4 w-48 mx-[470px] my-10  lowercase">
-        Order Your Favorite Food
-      </button>
+      <Link to={`/order/${title}`}>
+        <button className="btn btn-outline border-0 border-b-4 w-48 mx-[470px] my-10  lowercase">
+          Order Your Favorite Food
+        </button>
+      </Link>
     </div>
   );
 };

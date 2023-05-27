@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import MenuItem from "../MenuItem/MenuItem";
 import UseMenu from "../../Hooks/UseMenu";
+import { Link } from "react-router-dom";
 
 const PopularMenu = () => {
   const [menu] = UseMenu();
@@ -19,9 +20,11 @@ const PopularMenu = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
           <div>
-            <button className=" btn bg-emerald-500 text-black  border-0 border-b-4 font-mono mx-28 w-40 mt-16  lg:w-36 lg:mx-[440px] lg:mt-5 ">
-              View Full Menu
-            </button>
+            <Link to="/menu">
+              <button className=" btn bg-emerald-500 text-black  border-0 border-b-4 font-mono mx-28 w-40 mt-16  lg:w-36 lg:mx-[440px] lg:mt-5 ">
+                View Full Menu
+              </button>
+            </Link>
           </div>
         </div>
       </section>

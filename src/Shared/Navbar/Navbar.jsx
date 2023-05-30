@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { IoFastFoodSharp } from "react-icons/io5";
+import UseCart from "../../Hooks/UseCart/UseCart";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const [cart] = UseCart();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .then((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="navbar fixed z-10 bg-opacity-50 max-w-6xl text-white bg-black">
@@ -44,12 +58,34 @@ const Navbar = () => {
               <Link to="/order/salad">Order Item</Link>
             </li>
             <li>
-              <Link to="/login">Log In</Link>
+              <Link to="/secret">Secret</Link>
+            </li>
+            <li>
+              <Link to="/dashBoard/myCart">
+                <button className="btn gap-2">
+                  <IoFastFoodSharp className="text-xl"></IoFastFoodSharp>
+                  <div className="badge badge-error">+{cart?.length || 0}</div>
+                </button>
+              </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-success">Get started</a>
+          {user ? (
+            <>
+              <span>{user?.displayName}</span>
+              <span></span>
+              <button onClick={handleLogOut} className="btn btn-ghost">
+                LogOut
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="btn btn-success font-bold">Log In</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

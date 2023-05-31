@@ -6,11 +6,18 @@ import {
   IoCalendar,
   IoHome,
   IoMenu,
+  IoPeople,
 } from "react-icons/io5";
 
 import { RiShoppingBagFill, RiMailFill } from "react-icons/ri";
+import { GiForkKnifeSpoon } from "react-icons/gi";
+import { FaBook } from "react-icons/fa";
+import UseCart from "../Hooks/UseCart/UseCart";
 
 const DashBoard = () => {
+  const [cart] = UseCart();
+
+  const isAdmin = true;
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -31,26 +38,73 @@ const DashBoard = () => {
           <ul className="menu p-4 w-80 bg-info text-black font-semibold  ">
             {/* <!-- Sidebar content here --> */}
 
-            <li>
-              <NavLink to="/dashBoard/Homes">
-                <IoHome></IoHome>User's Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashBoard/reserVations">
-                <IoCalendar></IoCalendar>Reservations
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashBoard/payment">
-                <IoWallet></IoWallet>Payment Method
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashBoard/myCart">
-                <IoFastFoodSharp></IoFastFoodSharp>My Cart
-              </NavLink>
-            </li>
+            {isAdmin ? (
+              <>
+                <li>
+                  <NavLink to="/dashBoard/Homes">
+                    <IoHome></IoHome>ADMIN HOME
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/reserVations">
+                    <GiForkKnifeSpoon></GiForkKnifeSpoon>ADD ITEMS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/payment">
+                    <IoMenu></IoMenu>MANAGE ITEMS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/myBooking">
+                    <FaBook></FaBook>MANAGE BOOKINGS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/allUsers">
+                    <IoPeople></IoPeople>ALL USERS
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                {" "}
+                <li>
+                  <NavLink to="/dashBoard/Homes">
+                    <IoHome></IoHome>USER HOME
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/reserVations">
+                    <IoCalendar></IoCalendar>RESERVATION
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/payment">
+                    <IoWallet></IoWallet>PAYMENT HISTORY
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/payment">
+                    <IoWallet></IoWallet>ADD REVIEW
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/payment">
+                    <IoWallet></IoWallet>MY BOOKING
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashBoard/myCart">
+                    <IoFastFoodSharp></IoFastFoodSharp>MY CART
+                    <div className="badge  badge-warning font-bold">
+                      +{cart?.length || 0}
+                    </div>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <div className="divider"></div>
             <li>
               <NavLink to="/">

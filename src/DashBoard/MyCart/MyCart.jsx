@@ -1,11 +1,38 @@
 import React from "react";
 import UseCart from "../../Hooks/UseCart/UseCart";
 import { Helmet } from "react-helmet-async";
-
+import { IoTrash } from "react-icons/io5";
+import Swal from "sweetalert2";
 const MyCart = () => {
-  const [cart] = UseCart();
+  const [cart, refetch] = UseCart();
   console.log(cart);
   const total = cart.reduce((sum, item) => item.price + sum, 0);
+
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <Helmet>
@@ -22,7 +49,6 @@ const MyCart = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Food</th>
               <th>Item Name</th>
               <th>Price</th>
               <th>Action</th>
@@ -30,7 +56,7 @@ const MyCart = () => {
           </thead>
           <tbody>
             {cart.map((item, index) => (
-              <tr item={item._id}>
+              <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
@@ -44,14 +70,18 @@ const MyCart = () => {
                     </div>
                     <div>
                       <div className="font-bold">{item.name}</div>
-                      <div className="text-sm opacity-50">United States</div>
                     </div>
                   </div>
                 </td>
 
-                <td>{item.price}</td>
+                <td>${item.price}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <button
+                    onClick={() => handleDelete(item)}
+                    className="btn bg-red-600 text-xl hover:bg-green-400 "
+                  >
+                    <IoTrash></IoTrash>
+                  </button>
                 </td>
               </tr>
             ))}

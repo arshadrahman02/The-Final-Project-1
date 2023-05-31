@@ -11,6 +11,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import SocialLog from "../SocialLogIn/SocialLog";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -126,6 +127,7 @@ const Login = () => {
                   <span className="font-bold">Create a New Account</span>
                 </p>
               </Link>
+              <SocialLog></SocialLog>
             </div>
           </form>
         </div>
